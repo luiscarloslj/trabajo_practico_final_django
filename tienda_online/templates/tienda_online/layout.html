@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>mi archivo html desde django</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="container bg-warning pb-3">
+      <header
+        class="
+          d-flex
+          align-items-center
+          justify-content-center justify-content-between
+          py-3
+          mb-4
+          border-bottom
+        "
+      >
+        <a
+          href="/"
+          class="
+            d-flex
+            align-items-center
+            col-md-3
+            mb-2 mb-md-0
+            text-dark text-decoration-none
+          "
+        >
+          <img src="{% static 'img/logo.png' %}" alt="" width="100px">
+        </a>
+        <div class="text-center  d-none d-sm-none d-md-none d-lg-block">
+          <h1 class="hidden-md-up">JAGUARETE KAA S.A.</h1>
+          <h6>Equipos de computacion</h6>
+        </div>
+        <div class="text-end">
+          <button type="button" class="btn btn-outline-dark">Login</button>
+          <button type="button" class="btn btn-dark">Registro</button>
+          <button type="button" class="btn btn-dark">Carrito</button>
+        </div>
+      </header>
+    
+    <!-- Barra de navegacion -->
+    
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <button
+          class="navbar-toggler mt-0"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Categorias</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Acerca de</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="mailto:luiscarloslj77777@gmail.com">Contacto</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Nuevo producto</a>
+            </li>
+          </ul>
+          
+        </div>
+        <form class="d-flex">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Buscar"
+              aria-label="Buscar"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              Buscar
+            </button>
+          </form>
+      </div>
+      </nav>
+    </div>
+    
+    <div class="container bg-light mt-3 pt-3 ">
+      {% block body %}
+
+
+      {% endblock %}
+    </div>
+    
+    <div class="container mt-auto text-center py-3 px-0 bg-warning text-dark mb-0"> 
+      
+        © 2021 Copyright: Jaguarete Kaa S.A.<br>
+        Desarrollador: Luis Lopez     
+      
+    </div>
+    {% block javascript %}
+	<script src='/static/js/script.js'></script>
+  <!-- <script src="{% static 'tienda_online/js/script.js' %}"></script> -->
+{% endblock %}
+    
+  </body>
+</html>

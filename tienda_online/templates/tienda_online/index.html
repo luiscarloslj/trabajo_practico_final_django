@@ -1,0 +1,24 @@
+{% extends 'tienda_online/layout.html' %} {% block body %}
+
+<!-- nota -->
+<div class="row">
+{% for producto in productos %}
+
+<div class="card col-lg-4" style="width: 18rem">
+  {{forloop.counter}}
+  {% if forloop == 3 %}
+  <h2>Hello</h2>
+  {% endif %}
+  <div class="card-body">
+    <h5 class="card-title">Ultimo Producto</h5>
+    <p class="card-text">
+      {{ producto.titulo }}. Precio ${{ producto.precio }}.
+      </p>
+  </div>
+  <img src="{{ producto.image.url }}" class="card-img-top" alt="producto" />
+  <a href="#" class="btn btn-primary">Ver</a>
+</div>
+
+{% endfor %} {% endblock %}
+</div>
+
