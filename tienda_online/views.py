@@ -1,5 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Productos
+from .forms import UserRegisterForm
+from django.contrib import messages
 
 
 def index(request):
@@ -10,3 +12,17 @@ def index(request):
 
 def acerca_de(request):
     return render(request, 'tienda_online/acerca_de.html')
+
+
+def registro(request):
+    if request.method == 'POST':
+        form = UserRegisterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data['username']
+            messages.success(request, f'Usuario {username} creado')
+            return redirect('index')
+    else:
+        form = UserRegisterForm()
+    context = {'form': form}
+    return render(request, 'tienda_online/registro.html', context)
