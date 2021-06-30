@@ -26,3 +26,9 @@ def registro(request):
         form = UserRegisterForm()
     context = {'form': form}
     return render(request, 'tienda_online/registro.html', context)
+
+
+def producto_detalles(request, pk):
+    productos = Productos.objects.get(id=pk)
+    context = {'productos': productos}
+    return render(request, 'tienda_online/producto_detalles.html', context)

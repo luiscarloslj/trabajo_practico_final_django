@@ -14,14 +14,14 @@
       </p>
   </div>
   <img src="{{ producto.image.url }}" class="card-img-top" alt="producto" />
-  <a href="#" class="btn btn-primary">Ver</a>
+  <a href="  {{ producto.pk }} " class="btn btn-primary">Ver</a>
 </div>
 {% else %}
 <div class="text-center mt-4"> 
 {% cycle '<h4>Mas Productos</h4>' '' '' '' '' '' '' %}
 </div>
 <div class="my-3 col-lg-12">
-{{ producto.titulo }}. Precio ${{ producto.precio }}
+{{ producto.titulo }}. Precio ${{ producto.precio }}<a href="{{ producto.pk }} "> Ver...</a>
 </div>
 {% endif %}
 {% endif %}
