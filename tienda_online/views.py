@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Productos
+from .models import Productos, Categorias
 from .forms import UserRegisterForm
 from django.contrib import messages
 
