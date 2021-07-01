@@ -29,6 +29,6 @@ def registro(request):
 
 
 def producto_detalles(request, pk):
-    productos = Productos.objects.get(id=pk)
-    context = {'productos': productos}
+    producto = Productos.objects.get(id=pk)
+    context = {'producto': producto}
     return render(request, 'tienda_online/producto_detalles.html', context)

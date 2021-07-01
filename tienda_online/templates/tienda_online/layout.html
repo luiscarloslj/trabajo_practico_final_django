@@ -65,7 +65,9 @@
                 Categorias
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" href="#">Action</a></li>
+                {% for categoria in categorias %}  
+                <li><a class="dropdown-item" href="#"> {{categoria.nombre}} </a></li>
+                {% endfor %}
               </ul>
             </li>
             <li class="nav-item">
@@ -101,7 +103,6 @@
   {% endif %}
       </nav>
     </div>
-    
     <div class="container bg-light mt-3 pt-3 ">
 
       {% block body %}

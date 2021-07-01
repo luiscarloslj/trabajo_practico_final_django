@@ -1,14 +1,14 @@
 {% extends 'tienda_online/layout.html' %} {% block body %}
 <div class="w-75 mx-auto my-5">
 
-    <h4 class="text-center mb-4"> {{productos.titulo}} </h4>
+    <h4 class="text-center mb-4"> {{producto.titulo}} </h4>
     <div class="d-inline-flex m-3">
-        <img src="{{ productos.image.url }}" alt="" width="300">
+        <img src="{{ producto.image.url }}" alt="" width="300">
     <section class="d-inline px-4">
-        <h5> {{productos.categoria}} </h5>
-        <p class="my-4">Descripcion: {{productos.contenido}}</p>
+        <h5> {{producto.categoria}} </h5>
+        <p class="my-4">Descripcion: {{producto.contenido}}</p>
             <div class="d-flex justify-content-between py-4">
-                <strong>Precio: ${{productos.precio}}.00</strong>
+                <strong>Precio: ${{producto.precio}}.00</strong>
                 {% if request.user.is_authenticated %}
                 <div class="btn-warning p-2">Agregar al carrito</div>
                 {% endif %}
