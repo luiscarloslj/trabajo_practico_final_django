@@ -12,4 +12,5 @@ urlpatterns = [
     path('logout/', LogoutView.as_view(template_name='tienda_online/logout.html'), name="logout"),
     path('<int:pk>/',
          views.producto_detalles, name="producto_detalles"),
+    path('busqueda/', views.busqueda, name="busqueda"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

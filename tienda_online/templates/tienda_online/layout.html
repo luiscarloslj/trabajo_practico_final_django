@@ -66,7 +66,7 @@
               </a>
               <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                 {% for categoria in categorias %}  
-                <li><a class="dropdown-item" href="#"> {{categoria.nombre}} </a></li>
+                <li><a class="dropdown-item" href="{% url 'busqueda' %}?categoria={{categoria.id}}"> {{categoria.nombre}} </a></li>
                 {% endfor %}
               </ul>
             </li>
@@ -82,12 +82,14 @@
           </ul>
           
         </div>
-        <form class="d-flex">
+        <form class="d-flex" method="POST" action="{% url 'busqueda' %}">
+          {% csrf_token %}
             <input
               class="form-control me-2"
               type="search"
               placeholder="Buscar"
               aria-label="Buscar"
+              name="buscando"
             />
             <button class="btn btn-outline-success" type="submit">
               Buscar

@@ -1,0 +1,26 @@
+{% extends 'tienda_online/layout.html' %} {% block body %}
+{% if buscando %}
+    <h2 class="text-center">Resultados de "{{ buscando }}"</h2>
+    {% for producto_e in productos_e %}
+
+    <div class="my-2 col-lg-12">
+        {{ producto_e.titulo }}. Precio ${{ producto_e.precio }}<a href=" {% url 'producto_detalles' producto_e.id %} "> Ver...</a>
+        
+    </div>
+        
+    {% endfor %}
+{% endif %}
+
+{% for producto in productos %}
+<div class="d-lg-none"> {{ forloop.counter }} </div>
+{%if forloop.counter <= 1 %}
+<h2 class="text-center"> {{producto.categoria}} </h2>
+{% endif %}
+<div class="my-2 col-lg-12">
+    {{ producto.titulo }}. Precio ${{ producto.precio }}<a href=" {% url 'producto_detalles' producto.id %} "> Ver...</a>
+    
+</div>
+
+{% endfor %}
+{% endblock %}
+
