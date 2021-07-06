@@ -13,4 +13,5 @@ urlpatterns = [
     path('<int:pk>/',
          views.producto_detalles, name="producto_detalles"),
     path('busqueda/', views.busqueda, name="busqueda"),
+    path('producto_nuevo/', views.producto_nuevo, name="producto_nuevo"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

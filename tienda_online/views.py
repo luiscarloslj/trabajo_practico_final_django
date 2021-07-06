@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Productos, Categorias
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm, FormProducto
 from django.contrib import messages
 
 
@@ -36,10 +36,6 @@ def producto_detalles(request, pk):
 
 def busqueda(request):
     categoriaID = request.GET.get('categoria')
-    # if pk:
-    #     categoria = Categorias.objects.get(id=pk)
-    #     context = {'categoria': categoria}
-    #     return render(request, 'tienda_online/busqueda.html', context)
     if categoriaID == None:
         if request.method == 'POST':
             buscando = request.POST.get('buscando')
@@ -52,3 +48,15 @@ def busqueda(request):
 
         context = {'productos': productos}
         return render(request, 'tienda_online/busqueda.html', context)
+
+
+def producto_nuevo(request):
+    if request.method == 'POST':
+        form = FormProducto(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('producto_nuevo')
+    else:
+        form = FormProducto()
+    context = {'form': form}
+    return render(request, 'tienda_online/producto_nuevo.html', context)
