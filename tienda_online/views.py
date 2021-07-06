@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import Productos, Categorias
 from .forms import UserRegisterForm, FormProducto
 from django.contrib import messages
+from django.contrib.auth.decorators import permission_required
 
 
 def index(request):
@@ -50,6 +51,7 @@ def busqueda(request):
         return render(request, 'tienda_online/busqueda.html', context)
 
 
+@permission_required('tienda_online.add_productos')
 def producto_nuevo(request):
     if request.method == 'POST':
         form = FormProducto(request.POST, request.FILES)
@@ -60,3 +62,29 @@ def producto_nuevo(request):
         form = FormProducto()
     context = {'form': form}
     return render(request, 'tienda_online/producto_nuevo.html', context)
+
+
+@permission_required('tienda_online.change_productos')
+def producto_editar(request, id):
+    producto = get_object_or_404(Productos, id=id)
+    data = {
+        'form': FormProducto(instance=producto)
+    }
+    if request.method == 'POST':
+        form = FormProducto(data=request.POST,
+                            instance=producto, files=request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('producto_nuevo')
+        data["form"] = form
+    else:
+        form = FormProducto()
+    context = {'form': form}
+    return render(request, 'tienda_online/producto_editar.html', data)
+
+
+@permission_required('tienda_online.delete_productos')
+def producto_eliminar(request, id):
+    producto = get_object_or_404(Productos, id=id)
+    producto.delete()
+    return redirect('index')

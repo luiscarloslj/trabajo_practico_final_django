@@ -1,0 +1,14 @@
+{% extends "tienda_online/layout.html" %}
+{% block body %}
+<div class="container my-3">
+    <form class="input" enctype="multipart/form-data" method="POST">
+
+        {% csrf_token %}
+        {{ form.as_p }}
+        {{ form.errors }}
+        <button class="btn btn-outline-secondary" type="submit" id="submit">Editar</button>
+    
+    </form>
+    </div>
+
+{% endblock %}

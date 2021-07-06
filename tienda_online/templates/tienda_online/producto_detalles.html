@@ -9,6 +9,13 @@
         <p class="my-4">Descripcion: {{producto.contenido}}</p>
             <div class="d-flex justify-content-between py-4">
                 <strong>Precio: ${{producto.precio}}.00</strong>
+                <div >{%  if perms.tienda_online.change_productos%}
+                    <a class="btn btn-dark" href=" {% url 'producto_editar' producto.id %}  "> Editar </a>
+                    {% endif %}
+                    {%  if perms.tienda_online.delete_productos%}
+                    <a class="btn btn-danger" href=" {% url 'producto_eliminar' producto.id %}  "> Eliminar </a>
+                    {% endif %}
+                </div>
                 {% if request.user.is_authenticated %}
                 <div class="btn-warning p-2">Agregar al carrito</div>
                 {% endif %}
