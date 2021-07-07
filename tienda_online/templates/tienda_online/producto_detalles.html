@@ -17,7 +17,7 @@
                     {% endif %}
                 </div>
                 {% if request.user.is_authenticated %}
-                <div class="btn-warning p-2">Agregar al carrito</div>
+                <a class="btn btn-warning" href=" {% url 'agregar' producto.id %} " >Agregar al carro</a>
                 {% endif %}
             </div>
     </section>

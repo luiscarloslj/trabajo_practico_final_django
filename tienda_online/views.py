@@ -3,6 +3,7 @@ from .models import Productos, Categorias
 from .forms import UserRegisterForm, FormProducto
 from django.contrib import messages
 from django.contrib.auth.decorators import permission_required
+from .carro import Carro
 
 
 def index(request):
@@ -88,3 +89,38 @@ def producto_eliminar(request, id):
     producto = get_object_or_404(Productos, id=id)
     producto.delete()
     return redirect('index')
+
+# Todo del carro
+
+
+def carro(request):
+    # carro=Carro(request)
+    productos = Productos.objects.all()
+    return render(request, "tienda_online/carro.html", {"productos": productos})
+
+
+def agregar_producto(request, producto_id):
+    carro = Carro(request)
+    producto = Productos.objects.get(id=producto_id)
+    carro.agregar(producto=producto)
+    return redirect("carro")
+
+
+def eliminar_producto(request, producto_id):
+    carro = Carro(request)
+    producto = Productos.objects.get(id=producto_id)
+    carro.eliminar(producto=producto)
+    return redirect("carro")
+
+
+def restar_producto(request, producto_id):
+    carro = Carro(request)
+    producto = Productos.objects.get(id=producto_id)
+    carro.restar_producto(producto=producto)
+    return redirect("carro")
+
+
+def limpiar_carro(request, producto_id):
+    carro = Carro(request)
+    carro.limpiar_carro()
+    return redirect("carro")

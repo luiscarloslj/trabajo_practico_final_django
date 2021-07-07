@@ -64,6 +64,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'tienda_online.context_processors.categorias_a',
+                'tienda_online.context_processors.importe_total_carro',
             ],
         },
     },

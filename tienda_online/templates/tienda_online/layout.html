@@ -32,7 +32,7 @@
         <div class="text-end">
           {% if request.user.is_authenticated %}
           <a class="btn btn-dark" href="{% url 'logout' %}">Logout</a>
-          <a class="btn btn-dark" href="#">Carrito</a>
+          <a class="btn btn-dark" href="{% url 'carro' %}">Carro</a>
           {% else %}
           <a class="btn btn-outline-dark" href="{% url 'login' %}">Login</a>
           <a class="btn btn-dark" href="{% url 'registro' %}" >Registro</a>

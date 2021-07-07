@@ -18,4 +18,9 @@ urlpatterns = [
          views.producto_editar, name="producto_editar"),
     path('producto_eliminar/<id>/',
          views.producto_eliminar, name="producto_eliminar"),
+    path('carro/', views.carro, name="carro"),
+    path("agregar/<int:producto_id>/", views.agregar_producto, name="agregar"),
+    path("eliminar/<int:producto_id>/", views.eliminar_producto, name="eliminar"),
+    path("restar/<int:producto_id>/", views.restar_producto, name="restar"),
+    path("limpiar/", views.limpiar_carro, name="limpiar"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
