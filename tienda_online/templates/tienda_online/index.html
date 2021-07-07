@@ -3,7 +3,7 @@
 <!-- nota -->
 <div class="row d-flex justify-content-around my-3">
 {% for producto in productos %}
-<div class="d-lg-none"> {{ forloop.counter }} </div>
+<div class="d-none"> {{ forloop.counter }} </div>
 {%if forloop.counter <= 10 %}
 {%if forloop.counter <= 3 %}
 <div class="card col-lg-4" style="width: 18rem">
@@ -13,7 +13,7 @@
       {{ producto.titulo }}. Precio ${{ producto.precio }}.
       </p>
   </div>
-  <img src="{{ producto.image.url }}" class="card-img-top" alt="producto" />
+  <img src="{{ producto.image.url }}" class="card-img-top" alt="producto" width="300px" height="300"/>
   <a href="  {{ producto.pk }} " class="btn btn-primary">Ver</a>
 </div>
 {% else %}

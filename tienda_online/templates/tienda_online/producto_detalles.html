@@ -2,25 +2,32 @@
 <div class="w-75 mx-auto my-5">
 
     <h4 class="text-center mb-4"> {{producto.titulo}} </h4>
-    <div class="d-inline-flex m-3">
-        <img src="{{ producto.image.url }}" alt="" width="300">
-    <section class="d-inline px-4">
-        <h5> {{producto.categoria}} </h5>
-        <p class="my-4">Descripcion: {{producto.contenido}}</p>
-            <div class="d-flex justify-content-between py-4">
-                <strong>Precio: ${{producto.precio}}.00</strong>
-                <div >{%  if perms.tienda_online.change_productos%}
-                    <a class="btn btn-dark" href=" {% url 'producto_editar' producto.id %}  "> Editar </a>
+    <div class="row d-flex justify-content-center m-3">
+        <div class="col-lg-4">
+            <img src="{{ producto.image.url }}" class="img-thumbnail" alt="Producto" width="300px" height="300">
+        </div>
+        <div class="d-inline px-4 col-lg-6">
+            <h5> {{producto.categoria}} </h5>
+            <p class="my-4">Descripcion: {{producto.contenido}}</p>
+                <div class="d-flex justify-content-between py-4">
+                    <strong>Precio: ${{producto.precio}}.00</strong>
+                    <div >{%  if perms.tienda_online.change_productos%}
+                        <a class="btn btn-dark" href=" {% url 'producto_editar' producto.id %}  "> Editar </a>
+                        {% endif %}
+                        {%  if perms.tienda_online.delete_productos%}
+                        <a class="btn btn-danger" href=" {% url 'producto_eliminar' producto.id %}  "> Eliminar </a>
+                        {% endif %}
+                    </div>
+                    {% if request.user.is_authenticated %}
+                        {% if perms.tienda_online.change_productos%}
+                            <a class="btn btn-warning d-none" href=" {% url 'agregar' producto.id %} " >Agregar al carro</a>
+                        {% else %}
+                            <a class="btn btn-warning" href=" {% url 'agregar' producto.id %} " >Agregar al carro</a>
                     {% endif %}
-                    {%  if perms.tienda_online.delete_productos%}
-                    <a class="btn btn-danger" href=" {% url 'producto_eliminar' producto.id %}  "> Eliminar </a>
+                    
                     {% endif %}
                 </div>
-                {% if request.user.is_authenticated %}
-                <a class="btn btn-warning" href=" {% url 'agregar' producto.id %} " >Agregar al carro</a>
-                {% endif %}
-            </div>
-    </section>
+        </div>
     </div>
 </div>
 {% endblock %}

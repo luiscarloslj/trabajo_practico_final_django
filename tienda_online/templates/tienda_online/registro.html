@@ -1,6 +1,6 @@
 {% extends 'tienda_online/layout.html' %} {% block body %}
-<div class="container my-3">
-<form class="input" method="POST">
+<div class="d-flex justify-content-center my-3">
+<form class="form-signin" method="POST">
 
     {% csrf_token %}
     {{ form.as_p }}
